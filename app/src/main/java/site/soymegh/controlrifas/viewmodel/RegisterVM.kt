@@ -29,9 +29,12 @@ class RegisterVM() : ViewModel() {
 
     }
 
-    private fun save(register: Register) {
+    fun findByName(name: String) {
         viewModelScope.launch {
-            //dao.insert(register)
+            controlList.value = withContext(Dispatchers.IO) {
+                db.daoRegister().getByName(name)
+            }
         }
     }
+
 }

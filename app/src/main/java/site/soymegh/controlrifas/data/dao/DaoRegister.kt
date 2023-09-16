@@ -10,8 +10,11 @@ import site.soymegh.controlrifas.data.entities.Register
 
 @Dao
 interface DaoRegister {
-    @Query("SELECT * FROM registros")
+    @Query("SELECT * FROM registros ORDER BY nombre ASC")
     suspend fun getAll(): List<Register>
+
+    @Query("SELECT * FROM registros WHERE nombre LIKE  '%' || :name || '%'")
+    suspend fun getByName(name:String): List<Register>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(register: List<Register>):List<Long>

@@ -2,6 +2,7 @@ package site.soymegh.controlrifas
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             //finish()
         }
+
+        binding.TieFind.setOnClickListener {
+            val name = binding.TieFind.text.toString()
+            viewModel.findByName(name)
+        }
     }
 
     private fun initRecyclerView() {
@@ -55,6 +61,9 @@ class MainActivity : AppCompatActivity() {
             binding.RvList.addItemDecoration(decoration)
         })
     }
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 
 }

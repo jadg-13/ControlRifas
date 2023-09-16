@@ -48,4 +48,6 @@
     <string name="text_lists">Listas</string>
     <string name="text_actions">Acciones</string>
     <string name="text_total">Monto</string>
+    <string name="btnadd_desc">Agregar Nuevo Registro</string>
+    <string name="ivlogo_desc">Logo de la Parroquia</string>
 </resources>

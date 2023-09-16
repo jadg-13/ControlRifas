@@ -54,4 +54,11 @@ class SaveRegister : AppCompatActivity() {
 
         }
     }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
 }
