@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Control Rifas"
 include(":app")
- 

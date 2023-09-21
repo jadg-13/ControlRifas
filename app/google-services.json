@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430033611363",
+    "project_id": "testjadg",
+    "storage_bucket": "testjadg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430033611363:android:a7e5575b6c5d5f0ee26656",
+        "android_client_info": {
+          "package_name": "site.soymegh.controlrifas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4fdCN0cJZVrxlJk0eXJiBwd_st9EQJlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
