@@ -47,17 +47,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:hint="@string/text_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogoIg">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TieFind"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:textSize="20sp"
+            android:hint="@string/text_name"
             android:imeOptions="actionSearch"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
