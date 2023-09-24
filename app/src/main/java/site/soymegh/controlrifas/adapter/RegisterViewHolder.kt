@@ -1,11 +1,13 @@
 package site.soymegh.controlrifas.data.adapter
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.google.firebase.firestore.FirebaseFirestore
+import site.soymegh.controlrifas.EditRegister
 import site.soymegh.controlrifas.data.entities.Register
 import site.soymegh.controlrifas.databinding.ItemListBinding
 
@@ -13,21 +15,24 @@ import site.soymegh.controlrifas.databinding.ItemListBinding
 class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val binding = ItemListBinding.bind(view)
     var onItemDeleteListener: OnItemDeleteListener? = null
-
-
-    fun render(register: Register){
-        binding.TvNumber.text =register.id.toString()
+    val view = view
+    fun render(register: Register) {
+        binding.TvNumber.text = register.id.toString()
         binding.TvName.text = register.nombre
         binding.TvLists.text = register.lista
         binding.TvActions.text = register.acciones
         binding.TvTotal.text = register.monto.toString()
-        binding.TvDate.text = register.fecha.toString()
+        binding.TvDate.text = register.fecha
 
-     /*   binding.BtnDelete.setOnClickListener {
+        binding.BtnDelete.setOnClickListener {
             mostrarDialogoEliminar(register)
+        }
 
-        }*/
-
+        binding.BtnEdit.setOnClickListener {
+            val intent = Intent(view.context, EditRegister::class.java)
+            intent.putExtra("document", register.document)
+            view.context.startActivity(intent)
+        }
     }
 
     private fun mostrarDialogoEliminar(register: Register) {
@@ -47,26 +52,24 @@ class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun eliminarRegistro(register: Register) {
-        //val daoRegister = ControlApplication.db.daoRegister()
-
-        GlobalScope.launch {
-         //   val daoRegister = ControlApplication.db.daoRegister()
-
-            GlobalScope.launch {
-                val numRowsDeleted = 0 //daoRegister.delete(register)
-                if (numRowsDeleted > 0) {
-                    // Registro eliminado exitosamente
-                    binding.root.post {
-                        // Actualizar la UI después de eliminar el registro
-                        binding.root.visibility = View.GONE
-                        onItemDeleteListener?.onItemDelete(register)
-                    }
-                } else {
-                    // No se pudo eliminar el registro
-                    Toast.makeText(itemView.context, "No se pudo eliminar el registro", Toast.LENGTH_LONG).show()
+        val dbFb = FirebaseFirestore.getInstance()
+        val documentId = register.document
+        val documentRef = dbFb.collection("rifas").document(documentId)
+        documentRef.delete()
+            .addOnSuccessListener {
+                binding.root.post {
+                    // Actualizar la UI después de eliminar el registro
+                    binding.root.visibility = View.GONE
+                    onItemDeleteListener?.onItemDelete(register)
                 }
             }
-        }
+            .addOnFailureListener {
+                Toast.makeText(
+                    itemView.context,
+                    "No se pudo eliminar el registro",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
     }
 
     interface OnItemDeleteListener {

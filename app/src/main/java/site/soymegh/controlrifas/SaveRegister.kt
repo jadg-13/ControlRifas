@@ -34,13 +34,13 @@ class SaveRegister : AppCompatActivity() {
         val fecha = LocalDate.now()
         var register = Register(
             0,
+            "",
             binding.TieName.text.toString(),
             binding.TieLists.text.toString(),
             binding.TieActions.text.toString(),
             binding.TieTotal.text.toString().toDouble(),
             fecha.toString()
         )
-        val id ="0"
         dbFb.collection("rifas").add(
             hashMapOf("nombre" to register.nombre,
                 "lista" to register.lista,
@@ -49,7 +49,6 @@ class SaveRegister : AppCompatActivity() {
                 "fecha" to register.fecha)
         ).addOnSuccessListener {
             documentReference->
-            val id = documentReference.id
             Toast.makeText(this, "Registro guardado", Toast.LENGTH_LONG).show()
             val intent = Intent(this, Menu::class.java)
             startActivity(intent)

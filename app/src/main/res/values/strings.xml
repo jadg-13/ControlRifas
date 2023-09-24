@@ -16,4 +16,5 @@
     <string name="btnadd_desc">Agregar Nuevo Registro</string>
     <string name="ivlogo_desc">Logo de la Parroquia</string>
     <string name="delete_text">Eliminar</string>
+    <string name="edit_text">Editar</string>
 </resources>

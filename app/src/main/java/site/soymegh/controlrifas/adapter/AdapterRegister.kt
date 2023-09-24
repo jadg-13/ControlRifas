@@ -1,5 +1,6 @@
 package site.soymegh.controlrifas.data.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,15 +28,17 @@ class AdapterRegister (
         val item = listRegister[position]
         holder.render(item)
     }
+
     override fun onItemDelete(register: Register) {
         // Find the index of the deleted item
         val index = listRegister.indexOf(register)
         if (index != -1) {
             // Remove the item from the list
             listRegister.removeAt(index)
-            // Notify the adapter that an item has been removed
+            // Notify the adapter that the data set has changed
             notifyItemRemoved(index)
         }
     }
+
 
 }
