@@ -98,6 +98,7 @@ class EditRegister : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // La actualización se realizó correctamente
                     Toast.makeText(this, "Registro actualizado", Toast.LENGTH_LONG).show()
+
                     val intent = Intent(this, Menu::class.java)
                     startActivity(intent)
                 } else {

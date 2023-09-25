@@ -2,16 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
+   <!-- <item
         android:id="@+id/MnuHora"
         android:icon="@drawable/time"
         android:title="Hora"
         app:showAsAction="ifRoom" />
-
+-->
     <item
         android:id="@+id/MnuSalir"
         android:icon="@drawable/close"
         android:title="Salir"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 </menu>

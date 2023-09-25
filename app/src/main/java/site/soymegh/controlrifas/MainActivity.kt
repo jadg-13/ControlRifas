@@ -2,13 +2,13 @@ package site.soymegh.controlrifas
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import site.soymegh.controlrifas.databinding.ActivityMainBinding
+import site.soymegh.controlrifas.models.Dialog
 
 class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -26,18 +26,10 @@ class MainActivity : AppCompatActivity() {
     private fun initApp() {
         binding.BtnLogin.setOnClickListener {
             if (binding.TieEmail.text.toString().isEmpty()) {
-                Toast.makeText(
-                    baseContext,
-                    "El email no puede quedar vacío",
-                    Toast.LENGTH_LONG
-                ).show()
+                binding.TieEmail.setError("Ingrese su email.")
                 binding.TieEmail.requestFocus()
             } else if (binding.TiePassword.text.toString().isEmpty()) {
-                Toast.makeText(
-                    baseContext,
-                    "La contraseña no puede quedar vacía",
-                    Toast.LENGTH_LONG
-                ).show()
+                binding.TiePassword.setError("Debe ingresar su contraseña")
                 binding.TiePassword.requestFocus()
             } else {
                 val email = binding.TieEmail.text.toString()
@@ -63,19 +55,22 @@ class MainActivity : AppCompatActivity() {
                 val user = firebaseAuth.currentUser
                 val verificado = user?.isEmailVerified
                 if (verificado == true) {
+
                     val intent = Intent(this, Menu::class.java)
+
                     startActivity(intent)
                 } else {
-                    Toast.makeText(baseContext, "Debe verificar su cuenta", Toast.LENGTH_LONG)
-                        .show()
+                    val mensaje = Dialog(this)
+                    mensaje.showDialog("Advertencia", "Debe verificar su cuenta, revise su email")
                 }
             } else {
-                Toast.makeText(baseContext, "Usuario invalido", Toast.LENGTH_LONG).show()
+                //Toast.makeText(baseContext, "Usuario invalido", Toast.LENGTH_LONG).show()
+                val mensaje = Dialog(this)
+                mensaje.showDialog("Error", "Verifique si proporciono bien el email y la contraseña")
+
+                binding.TieEmail.requestFocus()
             }
 
         }
     }
-
-
-
 }

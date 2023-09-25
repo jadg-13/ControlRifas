@@ -2,7 +2,6 @@ package site.soymegh.controlrifas
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -24,7 +23,7 @@ class Menu : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
     private lateinit var recyclerView: RecyclerView
-
+    var sesionCerrada = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -43,17 +42,17 @@ class Menu : AppCompatActivity() {
     private fun initApp() {
         firebaseAuth = Firebase.auth
 
+
         binding.toolbar.setOnMenuItemClickListener(object : MenuItem.OnMenuItemClickListener,
             Toolbar.OnMenuItemClickListener {
             override fun onMenuItemClick(item: MenuItem): Boolean {
                 when (item.itemId) {
-                    R.id.MnuHora -> {
-                        //Toast.makeText(this@Menu, "hora", Toast.LENGTH_LONG).show()
+                   /* R.id.MnuHora -> {
                         return true
-                    }
-
+                    }*/
                     R.id.MnuSalir -> {
                         signOut()
+                        sesionCerrada = true;
                         return true
                     }
                 }
@@ -79,7 +78,12 @@ class Menu : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        return
+        if (sesionCerrada) {
+            // No permitir volver a la vista cerrada
+            finish()
+        } else {
+            super.onBackPressed();
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -92,7 +96,9 @@ class Menu : AppCompatActivity() {
     private fun signOut() {
         firebaseAuth.signOut()
         val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+        finish()
     }
 
     private fun getRegisters() {

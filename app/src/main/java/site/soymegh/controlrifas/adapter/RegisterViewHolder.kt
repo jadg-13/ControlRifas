@@ -32,6 +32,7 @@ class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val intent = Intent(view.context, EditRegister::class.java)
             intent.putExtra("document", register.document)
             view.context.startActivity(intent)
+
         }
     }
 
@@ -75,6 +76,7 @@ class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     interface OnItemDeleteListener {
         fun onItemDelete(register: Register)
     }
+
 }
 
 
