@@ -37,6 +37,7 @@ class AdapterRegister (
             listRegister.removeAt(index)
             // Notify the adapter that the data set has changed
             notifyItemRemoved(index)
+
         }
     }
 

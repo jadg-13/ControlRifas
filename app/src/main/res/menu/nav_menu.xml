@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <!-- <item
-        android:id="@+id/MnuHora"
-        android:icon="@drawable/time"
-        android:title="Hora"
-        app:showAsAction="ifRoom" />
--->
+
     <item
         android:id="@+id/MnuSalir"
         android:icon="@drawable/close"
         android:title="Salir"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/MnuNewUser"
+        android:icon="@drawable/new_user"
+        android:title="Nuevo Usuario"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/MnuChangePw"
+        android:icon="@drawable/login"
+        android:title="Cambiar Contraseña"
+        app:showAsAction="never" />
 </menu>

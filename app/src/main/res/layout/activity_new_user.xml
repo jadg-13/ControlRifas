@@ -6,8 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".NewUser">
 
+    <!-- <com.google.android.material.textfield.TextInputLayout
+         android:id="@+id/tfUserName"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginHorizontal="30dp"
+         android:layout_marginTop="40dp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent">
+
+         <com.google.android.material.textfield.TextInputEditText
+             android:id="@+id/TieUserName"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:hint="@string/user_name"
+             android:inputType="textEmailAddress"
+            />
+     </com.google.android.material.textfield.TextInputLayout>
+     -->
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfUserName"
+        android:id="@+id/tfEmailUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -15,25 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TieUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/user_name"
-            android:inputType="textEmailAddress"
-           />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfEmailUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfUserName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TieEmailUser"
@@ -58,8 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/write_pw"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -77,8 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/rewrite_pw"
-            android:inputType="textPassword"
-           />
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -91,14 +90,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tfRPassword" />
-    <Button
+
+   <!-- <Button
+        android:id="@+id/BtnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/BtnLogin"
-        android:text="Ir a Login"
         android:layout_marginHorizontal="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Ir a Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BtnRegister"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BtnRegister" />
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

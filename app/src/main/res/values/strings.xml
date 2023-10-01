@@ -9,7 +9,7 @@
     <string name="rewrite_pw">Repite la contraseña</string>
 
     <string name="text_title">Control de Rifas</string>
-    <string name="text_name">Nombre del encargado</string>
+    <string name="text_name">Escriba el dato a buscar</string>
     <string name="text_lists">Listas</string>
     <string name="text_actions">Acciones</string>
     <string name="text_total">Monto</string>
@@ -17,4 +17,5 @@
     <string name="ivlogo_desc">Logo de la Parroquia</string>
     <string name="delete_text">Eliminar</string>
     <string name="edit_text">Editar</string>
+    <string name="tvMonto">Total Neto: C$ 0.00</string>
 </resources>

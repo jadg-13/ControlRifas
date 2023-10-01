@@ -43,14 +43,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-    <com.google.android.material.textfield.TextInputLayout
+
+     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tfFind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogoIg">
+        app:layout_constraintTop_toBottomOf="@id/rgSearch">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TieFind"
@@ -62,6 +63,16 @@
             android:imeOptions="actionSearch"
             android:layout_gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMontoTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfFind"
+        android:text="@string/tvMonto"
+        android:gravity="center"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RvList"
         android:layout_width="0dp"
@@ -72,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tfFind" />
+        app:layout_constraintTop_toBottomOf="@id/tvMontoTotal"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/BtnAdd"
@@ -87,5 +98,32 @@
         android:layout_marginBottom="10dp"
         android:focusable="true"
         android:backgroundTint="@color/green"/>
+
+    <RadioGroup
+        android:id="@+id/rgSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ivLogoIg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbtEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encargado"
+            />
+
+        <RadioButton
+            android:id="@+id/rbtLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista" />
+
+    </RadioGroup>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

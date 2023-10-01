@@ -11,6 +11,8 @@ import site.soymegh.controlrifas.databinding.ActivityNewUserBinding
 import android.graphics.Color;
 import android.util.Patterns
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuthException
+import site.soymegh.controlrifas.models.Dialog
 
 class NewUser : AppCompatActivity() {
     private lateinit var binding: ActivityNewUserBinding
@@ -29,33 +31,45 @@ class NewUser : AppCompatActivity() {
                 val email = binding.TieEmailUser.text.toString()
                 val pw =binding.TiePasswordUser.text.toString()
                 saveNewUser(email, pw)
-                Toast.makeText(baseContext, "Entre a su email para terminar el registro.", Toast.LENGTH_LONG).show()
+
             }
         }
-        binding.BtnLogin.setOnClickListener {
+        /*binding.BtnLogin.setOnClickListener {
             val intent=Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
     }
 
-    private fun saveNewUser(email:String, pw:String){
-        firebaseAuth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(this){
-            task->
-            if (task.isSuccessful){
+    private fun saveNewUser(email: String, pw: String) {
+        firebaseAuth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 sendEmailVerification()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                val message = Dialog(this)
+                message.showDialog("Control de Rifas", "Entre a su email para terminar el registro.")
+                /*val intent = Intent(this, Menu::class.java)
+                startActivity(intent)*/
+            } else {
+                val errorCode = (task.exception as? FirebaseAuthException)?.errorCode
+                if (errorCode == "ERROR_EMAIL_ALREADY_IN_USE") {
+                    val message = Dialog(this)
+                    message.showDialog("Control de Rifas", "El email ya esta en uso")
+                } else {
+                    val message = Dialog(this)
+                    message.showDialog("Control de Rifas", "Error al crear usuario")
+                }
             }
         }
     }
 
+
     private fun validateField(): Boolean {
-        if (binding.TieUserName.text.toString().isEmpty()) {
+       /* if (binding.TieUserName.text.toString().isEmpty()) {
             binding.TieUserName.setError("Debe ingresar un nombre de usuario")
             binding.TieUserName.requestFocus()
             return false
-        } else if (binding.TieEmailUser.text.toString().isEmpty()) {
+        } else */
+        if (binding.TieEmailUser.text.toString().isEmpty()) {
             binding.TieEmailUser.setError("Debe ingresar un email")
             binding.TieEmailUser.requestFocus()
             return false

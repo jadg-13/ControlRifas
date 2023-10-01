@@ -43,10 +43,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.TvNewUser.setOnClickListener {
+       /* binding.TvNewUser.setOnClickListener {
             val intent = Intent(this, NewUser::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 
     private fun singIn(email: String, pw: String) {

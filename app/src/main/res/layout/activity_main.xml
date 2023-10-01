@@ -54,7 +54,7 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/TvNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toStartOf="@id/TvForgetPw"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tfPassword" />
-
+-->
     <TextView
         android:id="@+id/TvForgetPw"
         android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
 
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/TvNewUser"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tfPassword" />
 
     <Button
@@ -92,7 +92,7 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TvNewUser" />
+        app:layout_constraintTop_toBottomOf="@id/TvForgetPw" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
